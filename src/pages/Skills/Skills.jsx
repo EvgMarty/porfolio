@@ -1,5 +1,4 @@
 import styles from './Skills.module.scss';
-import { motion } from 'framer-motion';
 import ContainerMain from '../../components/Containers/ContainerMain/ContainerMain';
 import { scills } from '../../data/data';
 

@@ -1,44 +1,30 @@
-import { useGLTF } from '@react-three/drei';
-import { useThree, useFrame } from '@react-three/fiber';
-import { useState, useEffect } from 'react';
+import { useGLTF } from '@react-three/drei'
+import { useThree, useFrame } from '@react-three/fiber'
+import { useState, useEffect } from 'react'
 
 const Dog = (props) => {
-  const { nodes, materials } = useGLTF('/vixelDog/scene.gltf');
-  const [rotationSpeed, setRotationSpeed] = useState(0.7);
+  const { nodes, materials } = useGLTF('/vixelDog/scene.gltf')
+  const [rotationSpeed, setRotationSpeed] = useState(0.7)
 
   // Получаем текущие параметры сцены и камеры
-  const { camera, scene } = useThree();
+  const { camera, scene } = useThree()
 
   // Установим начальное положение и ориентацию камеры
-  camera.position.set(4, 4, 5); //Начальная позиция камеры
-  camera.lookAt(0, 0, 0);
+  camera.position.set(4, 4, 5) //Начальная позиция камеры
+  camera.lookAt(0, 0, 0)
 
   // Изменим масштаб объекта
-  const scale = 0.6; // Устанавливаем масштаб
-  scene.scale.set(scale, scale, scale);
+  const scale = 0.6 // Устанавливаем масштаб
+  scene.scale.set(scale, scale, scale)
 
   // Используем хук useFrame для управления анимацией вращение
   useFrame(() => {
-    scene.rotation.y += rotationSpeed; // используя useState зажали параметры вращения
-  });
-
-  //уменьшаем скорость вращение через время меняя состояние
-  useEffect(() => {
-    const timeOutStepOne = setTimeout(() => {
-      setRotationSpeed(0.09);
-    }, 800);
-
-    const timeOutStepTwo = setTimeout(() => {
-      setRotationSpeed(0.05);
-    }, 1400);
-    const timeOutThree = setTimeout(() => {
-      setRotationSpeed(0.01);
-    }, 1700);
-  }, []);
+    scene.rotation.y += rotationSpeed // используя useState зажали параметры вращения
+  })
 
   return (
     <group {...props} dispose={null}>
-      <group position={[0, 0.800, -0.01]} rotation={[-1.566, 0, 0]}>
+      <group position={[0, 0.8, -0.01]} rotation={[-1.566, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <mesh
             geometry={nodes.Object_4.geometry}
@@ -55,8 +41,8 @@ const Dog = (props) => {
         </group>
       </group>
     </group>
-  );
-};
+  )
+}
 
-useGLTF.preload('/vixelDog/scene.gltf');
-export default Dog;
+useGLTF.preload('/vixelDog/scene.gltf')
+export default Dog
