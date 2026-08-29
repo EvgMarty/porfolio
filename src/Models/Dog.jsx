@@ -1,10 +1,10 @@
 import { useGLTF } from '@react-three/drei'
 import { useThree, useFrame } from '@react-three/fiber'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const Dog = (props) => {
   const { nodes, materials } = useGLTF('/vixelDog/scene.gltf')
-  const [rotationSpeed, setRotationSpeed] = useState(0.7)
+  const [rotationSpeed] = useState(0.7)
 
   // Получаем текущие параметры сцены и камеры
   const { camera, scene } = useThree()
